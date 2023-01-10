@@ -1,0 +1,198 @@
+import java.util.Scanner;
+
+
+
+
+class Funcionario{   //não use modificadores, por exemplo public
+    
+    private String nome, dataNascimento;
+    private float salario;
+
+    public Funcionario() {
+    }
+
+    public Funcionario(String nome, String dataNascimento, float salario) {
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.salario = salario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public float getSalario() {
+        return salario;
+    }
+
+    public void setSalario(float salario) {
+        this.salario = salario;
+    }
+    
+}
+
+
+class Chefe extends Funcionario{   //não use modificadores, por exemplo public
+    
+    private String departamento;
+
+    public Chefe() {
+    }
+
+    public Chefe(String departamento, String nome, String dataNascimento, float salario) {
+        super(nome, dataNascimento, salario);
+        this.departamento = departamento;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+}
+
+
+class Vendedor extends Funcionario{
+    
+    private float comissaoVenda;
+    private int quantidadeVendas;
+
+    public Vendedor() {
+    }
+
+    public Vendedor(float comissaoVenda, int quantidadeVendas, String nome, String dataNascimento, float salario) {
+        super(nome, dataNascimento, salario + comissaoVenda*quantidadeVendas);
+        this.comissaoVenda = comissaoVenda;
+        this.quantidadeVendas = quantidadeVendas;
+    }
+
+    public float getComissaoVenda() {
+        return comissaoVenda;
+    }
+
+    public void setComissaoVenda(float comissaoVenda) {
+        this.comissaoVenda = comissaoVenda;
+    }
+
+    public int getQuantidadeVendas() {
+        return quantidadeVendas;
+    }
+
+    public void setQuantidadeVendas(int quantidadeVendas) {
+        this.quantidadeVendas = quantidadeVendas;
+    }
+    
+}
+
+
+class Operario extends Funcionario{
+    
+    private float valorProducao;
+    private int quantidadeProduzida;
+
+    public Operario() {
+    }
+
+    public Operario(float valorProducao, int quantidadeProduzida, String nome, String dataNascimento, float salario) {
+        super(nome, dataNascimento, valorProducao*quantidadeProduzida);
+        this.valorProducao = valorProducao;
+        this.quantidadeProduzida = quantidadeProduzida;
+    }
+
+    public float getValorProducao() {
+        return valorProducao;
+    }
+
+    public void setValorProducao(float valorProducao) {
+        this.valorProducao = valorProducao;
+    }
+
+    public int getQuantidadeProduzida() {
+        return quantidadeProduzida;
+    }
+
+    public void setQuantidadeProduzida(int quantidadeProduzida) {
+        this.quantidadeProduzida = quantidadeProduzida;
+    }
+    
+}
+
+
+class Horista extends Funcionario{
+    
+    private float valorHora;
+    private int totalHoras;
+
+    public Horista() {
+    }
+
+    public Horista(float valorHora, int totalHoras, String nome, String dataNascimento, float salario) {
+        super(nome, dataNascimento, valorHora*totalHoras);
+        this.valorHora = valorHora;
+        this.totalHoras = totalHoras;
+    }
+
+    public float getValorHora() {
+        return valorHora;
+    }
+
+    public void setValorHora(float valorHora) {
+        this.valorHora = valorHora;
+    }
+
+    public int getTotalHoras() {
+        return totalHoras;
+    }
+
+    public void setTotalHoras(int totalHoras) {
+        this.totalHoras = totalHoras;
+    }
+    
+}
+
+class FolhaPagamento{
+    
+    public void mostrarPagamentos(String nome, String cidade, String mes, Funcionario funcionarios[]){
+        
+    }
+    
+}
+
+
+
+
+
+public class Empresa{
+
+    public static void main(String[] args) {
+        
+        Scanner entrada = new Scanner(System.in);
+        
+        String nome = entrada.next();
+        String cidade = entrada.next();
+        String mes = entrada.next();
+        
+        String nomeChefe = entrada.next();
+        String nascimentoChefe = entrada.next();
+        float  salarioChefe = entrada.nextFloat();
+        String departamento = entrada.next();
+        Chefe chefe = new Chefe();
+
+    }
+
+}
