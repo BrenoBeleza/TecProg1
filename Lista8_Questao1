@@ -1,0 +1,197 @@
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+abstract class Contato{   //não use modificadores, por exemplo public
+
+   String nome, apelido, email, aniversario;
+
+    public Contato(String nome, String apelido, String email, String aniversario) {
+        this.nome = nome;
+        this.apelido = apelido;
+        this.email = email;
+        this.aniversario = aniversario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getApelido() {
+        return apelido;
+    }
+
+    public void setApelido(String apelido) {
+        this.apelido = apelido;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAniversario() {
+        return aniversario;
+    }
+
+    public void setAniversario(String aniversario) {
+        this.aniversario = aniversario;
+    }
+    
+    public String imprimirBasico(){
+        
+        return "Nome: "+nome+"\nApelido: "+apelido+"\nEmail: "+email+"Aniversário: "+aniversario+"\n";
+    }
+    
+    abstract String imprimirContato();
+    
+
+}
+
+class Amigos extends Contato{   //não use modificadores, por exemplo public
+    
+    int grau;
+
+    public Amigos(int grau, String nome, String apelido, String email, String aniversario) {
+        super(nome, apelido, email, aniversario);
+        this.grau = grau;
+    }
+
+    public int getGrau() {
+        return grau;
+    }
+
+    public void setGrau(int grau) {
+        this.grau = grau;
+    }
+    
+    @Override
+    public String imprimirContato(){
+        String graustr = "";
+        switch(grau){
+            case 1:
+                graustr = "Melhor Amigo";
+                break;
+            case 2:
+                graustr = "Amigo";
+                break;
+            case 3:
+                graustr = "Conhecido";
+                break;
+        }
+        
+        return super.imprimirBasico()+ "Grau: "+graustr+"\n";
+    }   
+}
+
+class Familia extends Contato(){
+    
+    String parentesco;
+
+    public Familia(String parentesco, String nome, String apelido, String email, String aniversario) {
+        super(nome, apelido, email, aniversario);
+        this.parentesco = parentesco;
+    }
+
+    public String getParentesco() {
+        return parentesco;
+    }
+
+    public void setParentesco(String parentesco) {
+        this.parentesco = parentesco;
+    }
+    
+    @Override
+    public String imprimirContato(){
+        return super.imprimirBasico()+"Parentesco: "+parentesco+"\n";
+    }
+}
+
+class ColegasDeTrabalho extends Contato(){
+    
+    String tipo;
+
+    public ColegasDeTrabalho(String tipo, String nome, String apelido, String email, String aniversario) {
+        super(nome, apelido, email, aniversario);
+        this.tipo = tipo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    @Override
+    public String imprimirContato(){
+        return super.imprimirBasico()+"Relacionamento de trabalho: "+tipo+"\n";
+    }
+}
+
+
+public class UsoContatos{
+
+    public static void main(String[] args) {
+
+        ArrayList<Contato> listaContatos = new ArrayList<>();
+        
+        Scanner entrada = new Scanner(System.in);
+        int menu;
+        do{
+            menu = entrada.nextInt();
+
+            switch(menu){
+                case 1:
+                    int inserir = entrada.nextInt();
+                    String nome = entrada.next();
+                    String apelido = entrada.next();
+                    String email = entrada.next();
+                    String aniversario = entrada.next();
+                    switch(inserir){
+                        case 1:
+                            int grau = entrada.nextInt();
+                            Amigos amigo = new Amigos(grau, nome, apelido, email, aniversario);
+                            listaContatos.add(amigo);
+                            break;
+                        case 2:
+                            String parentesco = entrada.next();
+                            Familia familia = new Familia(parentesco, nome, apelido, email, aniversario);
+                            listaContatos.add(familia);
+                            break;
+                        case 3:
+                            String tipo = entrada.next();
+                            ColegasDeTrabalho colega = new ColegasDeTrabalho(tipo, nome, apelido, email, aniversario);
+                            listaContatos.add(colega);
+                            break;        
+                    }
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+            }
+        
+        } while(menu != 8);
+    }
+
+}
